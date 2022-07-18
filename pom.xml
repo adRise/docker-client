@@ -69,8 +69,8 @@
 
   <repositories>
     <repository>
-       <id>jcenter</id>
-       <url>https://jcenter.bintray.com</url>
+       <id>tubi</id>
+       <url>https://tubi.jfrog</url>
     </repository>
   </repositories>
 

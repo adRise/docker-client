@@ -21,9 +21,10 @@
 package com.spotify.docker.client.messages;
 
 import static com.spotify.docker.FixtureUtil.fixture;
+import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,13 +43,12 @@ public class HostConfigTest {
   @Test
   public void testNullPortMappingValue() throws Exception {
 
-    objectMapper.setDefaultPropertyInclusion(JsonInclude.Value.construct(JsonInclude.Include.ALWAYS, JsonInclude.Include.NON_ABSENT));
-
     final HostConfig hostConfig = objectMapper
             .readValue(fixture("fixtures/hostConfig/nullablePortMappingValue.json"),
                     HostConfig.class);
 
-    final ImmutableMap<String, List<PortBinding>> expected = ImmutableMap.of("4535/tcp", Collections.singletonList(PortBinding.of("0.0.0.0", "1234")));
+    final ImmutableMap<String, List<PortBinding>> expected = ImmutableMap.of("4535/tcp",
+            Collections.singletonList(PortBinding.of("0.0.0.0", "1234")));
     assertEquals(hostConfig.portBindings(), expected);
   }
 
