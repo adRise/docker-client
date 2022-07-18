@@ -23,17 +23,34 @@ package com.spotify.docker.client.messages;
 import static com.spotify.docker.FixtureUtil.fixture;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.spotify.docker.client.ObjectMapperProvider;
+
+import java.util.Collections;
 import java.util.List;
 import org.junit.Test;
 
 public class HostConfigTest {
 
   private ObjectMapper objectMapper = ObjectMapperProvider.objectMapper();
+
+  @Test
+  public void testNullPortMappingValue() throws Exception {
+
+    objectMapper.setDefaultPropertyInclusion(JsonInclude.Value.construct(JsonInclude.Include.ALWAYS, JsonInclude.Include.NON_ABSENT));
+
+    final HostConfig hostConfig = objectMapper
+            .readValue(fixture("fixtures/hostConfig/nullablePortMappingValue.json"),
+                    HostConfig.class);
+
+    final ImmutableMap<String, List<PortBinding>> expected = ImmutableMap.of("4535/tcp", Collections.singletonList(PortBinding.of("0.0.0.0", "1234")));
+    assertEquals(hostConfig.portBindings(), expected);
+  }
 
   @Test
   public void testJsonAlways() throws Exception {

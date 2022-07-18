@@ -1,0 +1,35 @@
+{
+  "PortBindings" : {
+    "4510/tcp": null,
+    "4511/tcp": null,
+    "4512/tcp": null,
+    "4513/tcp": null,
+    "4514/tcp": null,
+    "4515/tcp": null,
+    "4516/tcp": null,
+    "4517/tcp": null,
+    "4518/tcp": null,
+    "4519/tcp": null,
+    "4520/tcp": null,
+    "4521/tcp": null,
+    "4522/tcp": null,
+    "4523/tcp": null,
+    "4524/tcp": null,
+    "4525/tcp": null,
+    "4526/tcp": null,
+    "4527/tcp": null,
+    "4528/tcp": null,
+    "4529/tcp": null,
+    "4530/tcp": null,
+    "4531/tcp": null,
+    "4532/tcp": null,
+    "4533/tcp": null,
+    "4534/tcp": null,
+    "4535/tcp": [
+      {
+        "HostIp": "0.0.0.0",
+        "HostPort": "1234"
+      }
+    ]
+  }
+}
