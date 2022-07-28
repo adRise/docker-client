@@ -38,6 +38,7 @@ import com.google.common.collect.Lists;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -305,6 +306,10 @@ public abstract class HostConfig {
       @JsonProperty("ReadonlyRootfs") final Boolean readonlyRootfs,
       @JsonProperty("Runtime") final String runtime,
       @JsonProperty("StorageOpt") final Map<String, String> storageOpt) {
+
+    // remove null mapping
+    portBindings.values().removeAll(Collections.singleton(null));
+
     return builder()
         .binds(binds)
         .blkioWeight(blkioWeight)
