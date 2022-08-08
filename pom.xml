@@ -8,7 +8,7 @@
   </parent>
 
   <artifactId>docker-client</artifactId>
-  <version>8.16.1-tubi</version>
+  <version>8.16.2-tubi</version>
   <packaging>jar</packaging>
   <name>docker-client</name>
   <description>A docker client</description>
@@ -144,7 +144,7 @@
     <dependency>
       <groupId>com.github.jnr</groupId>
       <artifactId>jnr-unixsocket</artifactId>
-      <version>0.18</version>
+      <version>0.38.17</version>
     </dependency>
     <dependency>
       <groupId>commons-lang</groupId>
